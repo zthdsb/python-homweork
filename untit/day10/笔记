@@ -1,0 +1,35 @@
+线程：内存共享
+线程同时修改同一份数据时必须加锁，mutex互斥锁
+递归锁
+
+def run(n)
+   print("run thresding")
+t=threading.Thread(trager=run,args=(n,))
+t.start()
+t.join()
+
+
+
+守护线程（slave）服务与非守护线程（master）
+for i in range(10)
+    t=threading.Thread(trager=run,args=(n,))
+    t.setDaemin(True)
+    t.start()
+print("master is done....")
+守护线程相当于最低优先级的线程，当程序中没有非守护线程（主线程）运行时，守护线程也结束【相当于奴隶和主人的关系，主人死了，奴隶也得死】
+实际开发就是，一个主线程之间有线程要运行，就可以用守护线程
+
+进程：至少包含一个线程
+
+队列  queue   #数据取出以后就没有了，这是不同于列表的地方
+   作用：解耦 ，使程序之间松耦合，不再有紧密的关系  （就是一个改变，不影响另一个）
+        提高效率
+   FIFO  =  first in first out
+   LIFO  =  last in first out
+   【生产者和消费者模型】
+
+
+io 操作不占CPU  ，从网上读取数据
+计算占用 CPU，  1+1
+
+python多线程  不适合CPU密集操作型的任务，适合io 操作的密集型的任务
